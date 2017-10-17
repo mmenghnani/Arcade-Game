@@ -1,12 +1,12 @@
 // Enemies our player must avoid
-var Enemy = function(x,y) {
+var Enemy = function(x,y) { //x is the speed, y is the row. y = 60 (first row), 230(second row), 145 (third row)
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = x * 110;
+    this.x = x * 110* Math.random(); // to randomize the position of the enemies
     this.y = y;
 };
 
@@ -28,7 +28,11 @@ Enemy.prototype.render = function(x,y) {
 var enemy1 = new Enemy(1,60);
 var enemy2 = new Enemy(2,230);
 var enemy3 = new Enemy(3,145);
-var allEnemies = [enemy1,enemy2,enemy3];
+var enemy4 = new Enemy(3,60);
+var enemy5 = new Enemy(1,230);
+var enemy6 = new Enemy(2,145);
+
+var allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -54,7 +58,6 @@ var Player = function() {
 // a handleInput() method.
 
 Player.prototype.update = function(){
-    window.ctx.drawImage(Resources.get(this.sprite),101,300);
 
 };
 
