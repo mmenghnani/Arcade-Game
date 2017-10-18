@@ -6,7 +6,7 @@ var Enemy = function(x,y) { //x is the speed, y is the row. y = 60 (first row), 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = x * 110* Math.random(); // to randomize the position of the enemies
+    this.x = x * 110; // to randomize the position of the enemies
     this.y = y;
 };
 
@@ -16,22 +16,26 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+   this.x = this.x + 400 * dt;
+   if(this.x>505){
+       this.x = this.x - 505;
+   }
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function(x,y) {
+Enemy.prototype.render = function() {
    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));
+   
 };
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-var enemy1 = new Enemy(1,60);
-var enemy2 = new Enemy(2,230);
-var enemy3 = new Enemy(3,145);
-var enemy4 = new Enemy(3,60);
-var enemy5 = new Enemy(1,230);
-var enemy6 = new Enemy(2,145);
+var enemy1 = new Enemy(Math.random(),60);
+var enemy2 = new Enemy(Math.random(),230);
+var enemy3 = new Enemy(Math.random(),145);
+var enemy4 = new Enemy(Math.random(),60);
+var enemy5 = new Enemy(Math.random(),230);
+var enemy6 = new Enemy(Math.random(),145);
 
+// Place all enemy objects in an array called allEnemies
 var allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
@@ -43,9 +47,7 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
-
 });
 
 //Player class along with player image.
@@ -68,19 +70,14 @@ Player.prototype.render = function(){
 
 Player.prototype.handleInput = function(x){
     if(x == "up"){
-
     }
     else if(x == "down"){
-
-
     }
     else if(x == "left"){
-
     }
     else if(x == "right"){
-
     }
 };
 
+// Place the player object in a variable called player
 var player = new Player();
-//player.render();
