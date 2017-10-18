@@ -25,8 +25,8 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));
-   
 };
+
 // Now instantiate your objects.
 var enemy1 = new Enemy(Math.random(),60);
 var enemy2 = new Enemy(Math.random(),230);
@@ -36,7 +36,7 @@ var enemy5 = new Enemy(Math.random(),230);
 var enemy6 = new Enemy(Math.random(),145);
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5,enemy6];
+var allEnemies = [enemy1,enemy2,enemy3];//,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -54,30 +54,41 @@ document.addEventListener('keyup', function(e) {
 // Now write your own player class
 var Player = function() {
     this.sprite = 'images/char-boy.png';
+    this.xloc = 101;
+    this.yloc = 400;
 };
 
 // This class requires an update(), render() and
 // a handleInput() method.
 
-Player.prototype.update = function(){
-
+Player.prototype.update = function(direction){   
 };
 
 Player.prototype.render = function(){
-    window.ctx.drawImage(Resources.get(this.sprite),101,400);
+    window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
    // console.log("hello");
 };
 
 Player.prototype.handleInput = function(x){
     if(x == "up"){
+        this.yloc = this.yloc - 83;
     }
     else if(x == "down"){
+        this.yloc = this.yloc + 83;
     }
     else if(x == "left"){
+        this.xloc = this.xloc - 101;
     }
     else if(x == "right"){
+        this.xloc = this.xloc + 101;
+        
     }
 };
 
 // Place the player object in a variable called player
 var player = new Player();
+
+function CollisionDetection(){
+    if(Player.xloc == Enemy.x && Player.yloc == Enemy.y){
+    console.log("collision");}
+}
