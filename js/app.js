@@ -20,12 +20,14 @@ Enemy.prototype.update = function(dt) {
    if(this.x>505){
        this.x = (this.x - 505)*dt;
    }
+  // console.log(this.x);
+
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));
-};
+   };
 
 // Now instantiate your objects.
 var enemy1 = new Enemy(Math.random(),60);
@@ -36,7 +38,7 @@ var enemy5 = new Enemy(Math.random(),230);
 var enemy6 = new Enemy(Math.random(),145);
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1,enemy2,enemy3];//,enemy4,enemy5,enemy6];
+var allEnemies = [enemy1];//,enemy2,enemy3];//,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -84,11 +86,13 @@ Player.prototype.handleInput = function(x){
         
     }
 };
+function CollisionDetection(){
+    //console.log(Player.xloc);
+    if(player.xloc == this.x && player.yloc == this.y){
+    console.log("collision");
+}
+}
 
 // Place the player object in a variable called player
 var player = new Player();
-
-function CollisionDetection(){
-    if(Player.xloc == Enemy.x && Player.yloc == Enemy.y){
-    console.log("collision");}
-}
+CollisionDetection();
