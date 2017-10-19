@@ -32,7 +32,6 @@ var Engine = (function(global) {
     ctx.fillStyle = 'red';
     ctx.fillText('Score : ', 268, 48);
     ctx.fillText('412', 400, 48);
-    CollisionDetection()
     
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.

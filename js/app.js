@@ -9,6 +9,12 @@ var Enemy = function(x,y) { //x is the speed, y is the row. y = 60 (first row), 
     this.x = x * 110; // to randomize the position of the enemies
     this.y = y;
 };
+Enemy.prototype.CollisionDetection = function(){
+
+    if(player.xloc == this.x && player.yloc == this.y){
+    console.log("collision");
+}
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -20,6 +26,7 @@ Enemy.prototype.update = function(dt) {
    if(this.x>505){
        this.x = (this.x - 505)*dt;
    }
+   this.CollisionDetection();
   // console.log(this.x);
 
 };
@@ -27,6 +34,8 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));
+   this.CollisionDetection();
+    //console.log("collision")
    };
 
 // Now instantiate your objects.
@@ -60,6 +69,9 @@ var Player = function() {
     this.yloc = 405;
 };
 
+// Place the player object in a variable called player
+var player = new Player();
+
 // This class requires an update(), render() and
 // a handleInput() method.
 
@@ -67,9 +79,10 @@ Player.prototype.update = function(direction){
 };
 
 Player.prototype.render = function(){
-    if((this.yloc > -50)&&(this.yloc<450)){  
+    if((this.yloc > -50)&&(this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
         window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
      }
+     this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
 };
 
 Player.prototype.handleInput = function(x){
@@ -87,13 +100,10 @@ Player.prototype.handleInput = function(x){
         
     }
 };
-function CollisionDetection(){
-    //console.log(Player.xloc);
-    if(player.xloc == this.x && player.yloc == this.y){
-    console.log("collision");
-}
-}
 
-// Place the player object in a variable called player
-var player = new Player();
-CollisionDetection();
+Player.prototype.GameOver = function(){
+    if(this.yloc<0){
+        
+    }
+};
+
