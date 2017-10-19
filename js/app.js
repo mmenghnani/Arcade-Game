@@ -38,7 +38,7 @@ var enemy5 = new Enemy(Math.random(),230);
 var enemy6 = new Enemy(Math.random(),145);
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1];//,enemy2,enemy3];//,enemy4,enemy5,enemy6];
+var allEnemies = [enemy1,enemy2,enemy3];//,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -57,7 +57,7 @@ document.addEventListener('keyup', function(e) {
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.xloc = 101;
-    this.yloc = 400;
+    this.yloc = 405;
 };
 
 // This class requires an update(), render() and
@@ -67,8 +67,9 @@ Player.prototype.update = function(direction){
 };
 
 Player.prototype.render = function(){
-    window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
-   // console.log("hello");
+    if((this.yloc > -50)&&(this.yloc<450)){  
+        window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
+     }
 };
 
 Player.prototype.handleInput = function(x){
