@@ -13,8 +13,6 @@
  * writing app.js a little simpler to work with.
  */
 
-
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -26,16 +24,14 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-       
-
     canvas.width = 505;
-    canvas.height = 606;
+    canvas.height = 600;
     doc.body.appendChild(canvas);
     //Adding score on the top right of the game
     ctx.font = '40px serif';
     ctx.fillStyle = 'red';
-    ctx.fillText('Score : ', 268, 48);
-    ctx.fillText('412', 400, 48);
+    ctx.fillText('Score :', 280, 48);
+    ctx.fillText('412', 430, 48);
     
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.

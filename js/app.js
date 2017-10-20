@@ -1,12 +1,15 @@
 // Enemies our player must avoid
-var Enemy = function(x,y) { //x is the speed, y is the row. y = 60 (first row), 230(second row), 145 (third row)
+
+/* x is the speed, y is the row. y = 60 (first row), 230(second row), 145 (third row)*/
+
+var Enemy = function(x,y) { 
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = x * 110; // to randomize the position of the enemies
+    this.x = x * 100; // to randomize the position of the enemies
     this.y = y;
 };
 Enemy.prototype.CollisionDetection = function(){
@@ -23,31 +26,33 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-   this.x = this.x + 900 * dt * Math.random();
-   if(this.x>505){
-       this.x = (this.x - 505)*dt;
+  (this.x) = (this.x) + 4 ; 
+  /*When the player crosses the canvas, I am deducting the width, so that
+  it reappears from the beginning*/
+  
+  if(this.x>505){
+       (this.x) = (this.x - 405)*dt;
    }
-   this.CollisionDetection();
-  // console.log(this.x);
-
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-   
    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));
 };
 
 // Now instantiate your objects.
-var enemy1 = new Enemy(Math.random(),60);
-var enemy2 = new Enemy(Math.random(),230);
-var enemy3 = new Enemy(Math.random(),145);
+var enemy1 = new Enemy(10,60);
+/*var enemy2 = new Enemy(Math.random(),230);
+
 var enemy4 = new Enemy(Math.random(),60);
 var enemy5 = new Enemy(Math.random(),230);
-var enemy6 = new Enemy(Math.random(),145);
+var enemy6 = new Enemy(Math.random(),145); */
+
+
+var enemy3 = new Enemy(Math.random(),145);
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1,enemy2,enemy3];//,enemy4,enemy5,enemy6];
+var allEnemies = [enemy1,enemy3];//,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
