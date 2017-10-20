@@ -10,8 +10,9 @@ var Enemy = function(x,y) { //x is the speed, y is the row. y = 60 (first row), 
     this.y = y;
 };
 Enemy.prototype.CollisionDetection = function(){
-
-    if(player.xloc == this.x && player.yloc == this.y){
+    var nRange = this.x - 50;
+    var pRange = this.x + 50;
+    if((player.xloc > nRange && player.xloc < pRange) && player.yloc == this.y){
     console.log("collision");
 }
 }
@@ -33,10 +34,9 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
+   
    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));
-   this.CollisionDetection();
-    //console.log("collision")
-   };
+};
 
 // Now instantiate your objects.
 var enemy1 = new Enemy(Math.random(),60);
@@ -56,7 +56,9 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        80 : 'paused',
+        32 : 'paused1'
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
@@ -79,25 +81,32 @@ Player.prototype.update = function(direction){
 };
 
 Player.prototype.render = function(){
-    if((this.yloc > -50)&&(this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
+    if((this.yloc > -50) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
         window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
      }
      this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
 };
 
+/* 
+The first condition is to translate the key pressed by the player and change the coordinates accordingly.
+The second conditions are to make sure that the player does not step out of the canvas area.
+*/
 Player.prototype.handleInput = function(x){
-    if(x == "up"){
+    if(x == "up" && player.yloc > 50){
         this.yloc = this.yloc - 83;
     }
-    else if(x == "down"){
+    else if(x == "down" && player.yloc < 400){
         this.yloc = this.yloc + 83;
     }
-    else if(x == "left"){
+    else if(x == "left" && player.xloc > 50){
         this.xloc = this.xloc - 101;
     }
-    else if(x == "right"){
+    else if(x == "right" && player.xloc < 400){
         this.xloc = this.xloc + 101;
-        
+    }
+    /* Game is paused when the user presses the key "p" or the space bar */
+    else if(x == "paused" || x == "paused1"  ){
+        alert("Game is paused"); 
     }
 };
 

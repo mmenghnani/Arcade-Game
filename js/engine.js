@@ -13,6 +13,8 @@
  * writing app.js a little simpler to work with.
  */
 
+
+
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -23,6 +25,8 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
+
+       
 
     canvas.width = 505;
     canvas.height = 606;
@@ -108,6 +112,9 @@ var Engine = (function(global) {
      * they are just drawing the entire screen over and over.
      */
     function render() {
+        //----
+       
+        //---
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
@@ -141,7 +148,8 @@ var Engine = (function(global) {
         }
 
         renderEntities();
-    }
+    
+}
 
     /* This function is called by the render function and is called on each game
      * tick. Its purpose is to then call the render functions you have defined
@@ -185,3 +193,4 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
