@@ -24,6 +24,7 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
+       
     canvas.width = 505;
     canvas.height = 600;
     doc.body.appendChild(canvas);
@@ -37,6 +38,7 @@ var Engine = (function(global) {
      * and handles properly calling the update and render methods.
      */
     function main() {
+        
         /* Get our time delta information which is required if your game
          * requires smooth animation. Because everyone's computer processes
          * instructions at different speeds we need a constant value that
@@ -85,7 +87,6 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        
         checkCollisions();
     }
 
@@ -105,17 +106,19 @@ var Engine = (function(global) {
     }
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
-            var nRange = enemy.x - 50;
-            var pRange = enemy.x + 50;
-            //console.log(player.xloc);
-            //console.log(pRange);
-            if ((player.xloc > nRange && player.xloc < pRange) && (enemy.y == player.yloc)) {
+            var nRangex = enemy.x - 50;
+            var pRangex = enemy.x + 50;
+            var nRangey = enemy.y - 50;
+            var pRangey = enemy.y + 50;
+           
+    //The logic below checks that the player is in the same square as the bug.        
+            if ((player.xloc > nRangex && player.xloc < pRangex) && (player.yloc > nRangey && player.yloc < pRangey)) {
                 player.xloc = 202;
-                player.yloc = 392;
+                player.yloc = 402;   
             };
         });
     }
-    
+
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -

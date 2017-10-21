@@ -24,11 +24,10 @@ Enemy.prototype.update = function(dt) {
   /*When the player crosses the canvas, I am deducting the width, so that
   it reappears from the beginning*/
   
-  if(this.x>505){
-       (this.x) = (this.x - 405)*dt;
+  if(this.x > 505){
+       (this.x) = (this.x - 400)*dt;
    }
-   //collisionDetection(Enemy);
-   //console.log("test");
+  
 };
 
 // Draw the enemy on the screen, required method for game
@@ -41,8 +40,7 @@ var enemy1 = new Enemy(10,1,1);
 var enemy2 = new Enemy(30,2,2);
 var enemy3 = new Enemy(40,3,3);
 var enemy4 = new Enemy(40,1,4);
-/* var enemy5 = new Enemy(Math.random(),230);
-var enemy6 = new Enemy(Math.random(),145); */
+
 
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [enemy1,enemy2,enemy3,enemy4];
@@ -66,7 +64,7 @@ document.addEventListener('keyup', function(e) {
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.xloc = 202;
-    this.yloc = 392;
+    this.yloc = 402;
 };
 
 // Place the player object in a variable called player
@@ -76,13 +74,16 @@ var player = new Player();
 // a handleInput() method.
 
 Player.prototype.update = function(direction){   
+    this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
 };
 
+
 Player.prototype.render = function(){
-    if((this.yloc > -50) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
-        window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
-     }
-     this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
+    //if(!test){ 
+        if((this.yloc > -50) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
+            window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
+        }
+    //}
 };
 
 /* 
@@ -90,10 +91,10 @@ The first condition(direction) is to translate the key pressed by the player and
 The second conditions are to make sure that the player does not step out of the canvas area.
 */
 Player.prototype.handleInput = function(x){
-    if(x == "up" && player.yloc > 142){
+    if(x == "up" && player.yloc > 50){
         this.yloc = this.yloc - 83;
     }
-    else if(x == "down" && player.yloc < 310){
+    else if(x == "down" && player.yloc < 320){
         this.yloc = this.yloc + 83;
     }
     else if(x == "left" && player.xloc > 100){
@@ -110,14 +111,14 @@ Player.prototype.handleInput = function(x){
 
 Player.prototype.GameOver = function(){
     if(this.yloc<0){
-        alert("you win");
+       // alert("You win");
     }
 };
 /*Adding Rocks to the canvas */
 var Stone = function(x,y){ //row in x and column in y
     this.sprite = 'images/Rock.png';
     this.x = (x * 50) ;
-    this.y = (y* 83) - 20 ;
+    this.y = (y * 83) - 23 ;
 };
 
 var stone1 = new Stone(2,1);
