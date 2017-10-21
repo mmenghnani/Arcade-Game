@@ -9,11 +9,10 @@ var Enemy = function(x,y,speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = x ; // to randomize the position of the enemies
-    this.y = ((y-1) * 85) + 69; //y is the row number
+    this.x = -100 ; // to randomize the position of the enemies
+    this.y = (y * 83) - 23; //y is the row number
     this.speed = speed;
 };
-
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -46,7 +45,7 @@ var enemy4 = new Enemy(40,1,4);
 var enemy6 = new Enemy(Math.random(),145); */
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1,enemy2,enemy3,enemy4];//,enemy4,enemy5,enemy6];
+var allEnemies = [enemy1,enemy2,enemy3,enemy4];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -66,8 +65,8 @@ document.addEventListener('keyup', function(e) {
 // Now write your own player class
 var Player = function() {
     this.sprite = 'images/char-boy.png';
-    this.xloc = 101;
-    this.yloc = 405;
+    this.xloc = 202;
+    this.yloc = 392;
 };
 
 // Place the player object in a variable called player
@@ -91,16 +90,16 @@ The first condition(direction) is to translate the key pressed by the player and
 The second conditions are to make sure that the player does not step out of the canvas area.
 */
 Player.prototype.handleInput = function(x){
-    if(x == "up" && player.yloc > 50){
+    if(x == "up" && player.yloc > 142){
         this.yloc = this.yloc - 83;
     }
-    else if(x == "down" && player.yloc < 400){
+    else if(x == "down" && player.yloc < 310){
         this.yloc = this.yloc + 83;
     }
-    else if(x == "left" && player.xloc > 50){
+    else if(x == "left" && player.xloc > 100){
         this.xloc = this.xloc - 101;
     }
-    else if(x == "right" && player.xloc < 400){
+    else if(x == "right" && player.xloc < 304){
         this.xloc = this.xloc + 101;
     }
     /* Game is paused when the user presses the key "p" or the space bar */
@@ -118,7 +117,7 @@ Player.prototype.GameOver = function(){
 var Stone = function(x,y){ //row in x and column in y
     this.sprite = 'images/Rock.png';
     this.x = (x * 50) ;
-    this.y = ((y-1) * 85) + 60 ;
+    this.y = (y* 83) - 20 ;
 };
 
 var stone1 = new Stone(2,1);

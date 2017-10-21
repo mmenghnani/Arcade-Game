@@ -110,8 +110,8 @@ var Engine = (function(global) {
             //console.log(player.xloc);
             //console.log(pRange);
             if ((player.xloc > nRange && player.xloc < pRange) && (enemy.y == player.yloc)) {
-                player.xloc = 101;
-                player.yloc = 405;
+                player.xloc = 202;
+                player.yloc = 392;
             };
         });
     }
