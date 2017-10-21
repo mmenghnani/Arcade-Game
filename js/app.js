@@ -10,16 +10,10 @@ var Enemy = function(x,y,speed) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = x ; // to randomize the position of the enemies
-    this.y = ((y-1) * 85) + 60; //y is the row number
+    this.y = ((y-1) * 85) + 69; //y is the row number
     this.speed = speed;
 };
-Enemy.prototype.CollisionDetection = function(){
-    var nRange = this.x - 50;
-    var pRange = this.x + 50;
-    if((player.xloc > nRange && player.xloc < pRange) && player.yloc == this.y){
-    console.log("collision");
-}
-}
+
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -34,6 +28,8 @@ Enemy.prototype.update = function(dt) {
   if(this.x>505){
        (this.x) = (this.x - 405)*dt;
    }
+   //collisionDetection(Enemy);
+   //console.log("test");
 };
 
 // Draw the enemy on the screen, required method for game
@@ -91,7 +87,7 @@ Player.prototype.render = function(){
 };
 
 /* 
-The first condition is to translate the key pressed by the player and change the coordinates accordingly.
+The first condition(direction) is to translate the key pressed by the player and change the coordinates accordingly.
 The second conditions are to make sure that the player does not step out of the canvas area.
 */
 Player.prototype.handleInput = function(x){
@@ -115,7 +111,22 @@ Player.prototype.handleInput = function(x){
 
 Player.prototype.GameOver = function(){
     if(this.yloc<0){
-        
+        alert("you win");
     }
 };
+/*Adding Rocks to the canvas */
+var Stone = function(x,y){ //row in x and column in y
+    this.sprite = 'images/Rock.png';
+    this.x = (x * 50) ;
+    this.y = ((y-1) * 85) + 60 ;
+};
+
+var stone1 = new Stone(2,1);
+var stone2 = new Stone(4,4);
+
+Stone.prototype.render = function(){
+    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));    
+};
+
+var allStones = [stone1,stone2];
 

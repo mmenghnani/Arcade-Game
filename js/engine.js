@@ -85,7 +85,8 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -100,8 +101,21 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+ 
     }
-
+    function checkCollisions() {
+        allEnemies.forEach(function(enemy) {
+            var nRange = enemy.x - 50;
+            var pRange = enemy.x + 50;
+            //console.log(player.xloc);
+            //console.log(pRange);
+            if ((player.xloc > nRange && player.xloc < pRange) && (enemy.y == player.yloc)) {
+                player.xloc = 101;
+                player.yloc = 405;
+            };
+        });
+    }
+    
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -
@@ -161,6 +175,13 @@ var Engine = (function(global) {
         });
 
         player.render();
+       // console.log(player.xloc);
+
+        //Function to render stones
+        allStones.forEach(function(stone){
+            stone.render();
+        });
+        
     }
 
     /* This function does nothing but it could have been a good place to
@@ -180,7 +201,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Rock.png'
     ]);
     Resources.onReady(init);
 
@@ -189,5 +211,8 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+
 })(this);
+
+
 
