@@ -30,7 +30,7 @@ var Engine = (function(global) {
     //Adding score on the top right of the game
     ctx.font = '40px serif';
     ctx.fillStyle = 'red';
-    ctx.fillText('Score :', 280, 48);
+    ctx.fillText('Score :', 310, 48);
     ctx.fillText('412', 430, 48);
     
     /* This function serves as the kickoff point for the game loop itself
@@ -61,6 +61,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
+        
     }
 
     /* This function does some initial setup that should only occur once,

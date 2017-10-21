@@ -2,15 +2,16 @@
 
 /* x is the speed, y is the row. y = 60 (first row), 230(second row), 145 (third row)*/
 
-var Enemy = function(x,y) { 
+var Enemy = function(x,y,speed) { 
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = x * 100; // to randomize the position of the enemies
-    this.y = y;
+    this.x = x ; // to randomize the position of the enemies
+    this.y = ((y-1) * 85) + 60; //y is the row number
+    this.speed = speed;
 };
 Enemy.prototype.CollisionDetection = function(){
     var nRange = this.x - 50;
@@ -26,7 +27,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-  (this.x) = (this.x) + 4 ; 
+  (this.x) = (this.x) +  (this.speed) ; 
   /*When the player crosses the canvas, I am deducting the width, so that
   it reappears from the beginning*/
   
@@ -41,18 +42,15 @@ Enemy.prototype.render = function() {
 };
 
 // Now instantiate your objects.
-var enemy1 = new Enemy(10,60);
-/*var enemy2 = new Enemy(Math.random(),230);
-
-var enemy4 = new Enemy(Math.random(),60);
-var enemy5 = new Enemy(Math.random(),230);
+var enemy1 = new Enemy(10,1,1);
+var enemy2 = new Enemy(30,2,2);
+var enemy3 = new Enemy(40,3,3);
+var enemy4 = new Enemy(40,1,4);
+/* var enemy5 = new Enemy(Math.random(),230);
 var enemy6 = new Enemy(Math.random(),145); */
 
-
-var enemy3 = new Enemy(Math.random(),145);
-
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1,enemy3];//,enemy4,enemy5,enemy6];
+var allEnemies = [enemy1,enemy2,enemy3,enemy4];//,enemy4,enemy5,enemy6];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
