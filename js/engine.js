@@ -28,15 +28,6 @@ var Engine = (function(global) {
     canvas.width = 505;
     canvas.height = 600;
     doc.body.appendChild(canvas);
-    //Adding score on the top right of the game
-    function calculateScore(){
-        ctx.font = '40px serif';
-        ctx.fillStyle = 'red';
-        ctx.fillText('Score :', 310, 48);
-        ctx.fillText('412', 'value', 48);
-    }
-    
-    calculateScore();
     
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -183,9 +174,7 @@ var Engine = (function(global) {
             enemy.render();
         });
          //Function to render stones
-         allStones.forEach(function(stone){
-            stone.render();
-        });
+        
         player.render();
        
     }

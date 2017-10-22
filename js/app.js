@@ -91,37 +91,7 @@ The first condition(direction) is to translate the key pressed by the player and
 The second conditions are to make sure that the player does not step out of the canvas area.
 */
 
-/*Adding Rocks to the canvas */
-var Stone = function(x,y){ //row in x and column in y
-    this.sprite = 'images/Rock.png';
-    this.x = ((x-1) * 101) ;
-    this.y = (y * 83) - 23 ;
-};
 
-var stone1 = new Stone(2,1);
-var stone2 = new Stone(4,4);
-
-Stone.prototype.render = function(){
-    window.ctx.drawImage(Resources.get(this.sprite),(this.x),(this.y));    
-};
-
-var allStones = [stone1,stone2];
-
-function checkStoneCollisions(){
-    allStones.forEach(function(stone) {
-        var nRangex = stone.x - 50;
-        var pRangex = stone.x + 50;
-        var nRangey = stone.y - 50;
-        var pRangey = stone.y + 50;
-        var checkCollision = false;
-        
-//The logic below checks that the player is in the same square as the bug.        
-        if ((player.xloc > nRangex && player.xloc < pRangex) && ((player.yloc > nRangey && player.yloc < pRangey))) {
-        checkCollision = true;
-        }
-    });
-}
-var prevY,prevX;
 Player.prototype.handleInput = function(x){
        
            if(x == "up" && player.yloc > 50 ){
