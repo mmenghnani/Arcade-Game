@@ -29,10 +29,14 @@ var Engine = (function(global) {
     canvas.height = 600;
     doc.body.appendChild(canvas);
     //Adding score on the top right of the game
-    ctx.font = '40px serif';
-    ctx.fillStyle = 'red';
-    ctx.fillText('Score :', 310, 48);
-    ctx.fillText('412', 430, 48);
+    function calculateScore(){
+        ctx.font = '40px serif';
+        ctx.fillStyle = 'red';
+        ctx.fillText('Score :', 310, 48);
+        ctx.fillText('412', 'value', 48);
+    }
+    
+    calculateScore();
     
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -58,10 +62,11 @@ var Engine = (function(global) {
          * for the next time this function is called.
          */
         lastTime = now;
-
+        
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
+        //console.log("Value of a is " + a);
         win.requestAnimationFrame(main);
         
     }
@@ -104,7 +109,7 @@ var Engine = (function(global) {
         player.update();
  
     }
-    function checkCollisions() {
+     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
             var nRangex = enemy.x - 50;
             var pRangex = enemy.x + 50;
@@ -118,6 +123,7 @@ var Engine = (function(global) {
             };
         });
     }
+    
 
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
@@ -176,15 +182,12 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-
-        player.render();
-       // console.log(player.xloc);
-
-        //Function to render stones
-        allStones.forEach(function(stone){
+         //Function to render stones
+         allStones.forEach(function(stone){
             stone.render();
         });
-        
+        player.render();
+       
     }
 
     /* This function does nothing but it could have been a good place to
@@ -205,7 +208,10 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/Rock.png'
+        'images/Rock.png',
+        'images/Heart.png'
+
+
     ]);
     Resources.onReady(init);
 

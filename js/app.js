@@ -54,7 +54,7 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down',
         80 : 'paused',
-        32 : 'paused1'
+        32 : 'space bar'
     };
     player.handleInput(allowedKeys[e.keyCode]);
 });
@@ -90,34 +90,11 @@ Player.prototype.render = function(){
 The first condition(direction) is to translate the key pressed by the player and change the coordinates accordingly.
 The second conditions are to make sure that the player does not step out of the canvas area.
 */
-Player.prototype.handleInput = function(x){
-    if(x == "up" && player.yloc > 50){
-        this.yloc = this.yloc - 83;
-    }
-    else if(x == "down" && player.yloc < 320){
-        this.yloc = this.yloc + 83;
-    }
-    else if(x == "left" && player.xloc > 100){
-        this.xloc = this.xloc - 101;
-    }
-    else if(x == "right" && player.xloc < 304){
-        this.xloc = this.xloc + 101;
-    }
-    /* Game is paused when the user presses the key "p" or the space bar */
-    else if(x == "paused" || x == "paused1"  ){
-        alert("Game is paused"); 
-    }
-};
 
-Player.prototype.GameOver = function(){
-    if(this.yloc<0){
-       // alert("You win");
-    }
-};
 /*Adding Rocks to the canvas */
 var Stone = function(x,y){ //row in x and column in y
     this.sprite = 'images/Rock.png';
-    this.x = (x * 50) ;
+    this.x = ((x-1) * 101) ;
     this.y = (y * 83) - 23 ;
 };
 
@@ -129,4 +106,46 @@ Stone.prototype.render = function(){
 };
 
 var allStones = [stone1,stone2];
+
+function checkStoneCollisions(){
+    allStones.forEach(function(stone) {
+        var nRangex = stone.x - 50;
+        var pRangex = stone.x + 50;
+        var nRangey = stone.y - 50;
+        var pRangey = stone.y + 50;
+        var checkCollision = false;
+        
+//The logic below checks that the player is in the same square as the bug.        
+        if ((player.xloc > nRangex && player.xloc < pRangex) && ((player.yloc > nRangey && player.yloc < pRangey))) {
+        checkCollision = true;
+        }
+    });
+}
+var prevY,prevX;
+Player.prototype.handleInput = function(x){
+       
+           if(x == "up" && player.yloc > 50 ){
+            this.yloc = this.yloc - 83;
+            }
+            else if(x == "down" && player.yloc < 320){
+                this.yloc = this.yloc + 83;
+            }
+            else if(x == "left" && player.xloc > 100){
+                this.xloc = this.xloc - 101;
+            }
+            else if(x == "right" && player.xloc < 304){
+                this.xloc = this.xloc + 101;
+            }
+            /* Game is paused and an alert is displayed when the user presses the key "p" or the space bar
+            Clicking on "ok" starts the game back again */
+            else if(x == "paused" || x == "space bar"  ){
+            alert("Game is paused"); 
+            }
+};
+
+Player.prototype.GameOver = function(){
+    if(this.yloc < 0){ //when the player reaches the water, its game over. player has won the game.
+        alert("You win");
+    }
+};
 
