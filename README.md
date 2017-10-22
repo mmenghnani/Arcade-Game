@@ -1,6 +1,27 @@
 frontend-nanodegree-arcade-game
-===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+for self-checking their submission.
+
+HOW TO PLAY
+
+Selecting Player
+
+On initial page load (or refresh), 'Select Player' modal will show up. Select between the two options using mouse point and click.
+
+Moving the Player
+
+Use keyboard up, down, left and right arrow keys to move the player.
+
+Winning the Game
+
+Use arrow keys to help player cross the road and reach to the other side of the road where there is water. As soon as the player will reach to the water, the game has won and player will reset to its starting position.
+
+Loosing the Game
+
+While crossing the road, if player touches the enemy bug, you loose. The player will reset to its starting position.
+
+Pausing the Game
+
+Once the game has begun, the player can pause the game by pressing the key "p" or space bar. Clicking on "ok" on the alert dialog box will resume the game
