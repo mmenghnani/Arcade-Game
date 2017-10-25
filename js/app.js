@@ -2,14 +2,14 @@
 
 /* x is the speed, y is the row. y = 60 (first row), 230(second row), 145 (third row)*/
 
-var Enemy = function(x,y,speed) { 
+var Enemy = function(y,speed) { 
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = -100 ; // to randomize the position of the enemies
+    this.x = -100 ; 
     this.y = (y * 83) - 23; //y is the row number
     this.speed = speed;
 };
@@ -21,13 +21,10 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
   (this.x) = (this.x) +  (this.speed) ; 
-  /*When the player crosses the canvas, I am deducting the width, so that
-  it reappears from the beginning*/
-  
+  //When the enemy crosses the canvas, I am deducting the width, so that it reappears from the beginning 
   if(this.x > 505){
        (this.x) = (this.x - 400)*dt;
    }
-  
 };
 
 // Draw the enemy on the screen, required method for game
@@ -36,10 +33,10 @@ Enemy.prototype.render = function() {
 };
 
 // Now instantiate your objects.
-var enemy1 = new Enemy(10,1,1);
-var enemy2 = new Enemy(30,2,2);
-var enemy3 = new Enemy(40,3,3);
-var enemy4 = new Enemy(40,1,4);
+var enemy1 = new Enemy(1,1);
+var enemy2 = new Enemy(2,2);
+var enemy3 = new Enemy(3,3);
+var enemy4 = new Enemy(1,4);
 
 
 // Place all enemy objects in an array called allEnemies
@@ -73,21 +70,19 @@ Player.prototype.addSprite = function(sprite){
     this.sprite = sprite;
 };
 
-
 // This class requires an update(), render() and
 // a handleInput() method.
 
 Player.prototype.update = function(){ 
-    //this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
+    this.GameOver(); //when the player reaches water, its game over. 
 };
 
 Player.prototype.render = function(){
         if(this.sprite !=null){
-            if((this.yloc > -50) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
+            if((this.yloc > -30) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
             window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
         } 
     } 
-        this.GameOver();
 }; 
 
 /* 
@@ -95,9 +90,7 @@ The first condition(direction) is to translate the key pressed by the player and
 The second conditions are to make sure that the player does not step out of the canvas area.
 */
 
-
 Player.prototype.handleInput = function(x){
-       
            if(x == "up" && player.yloc > 50 ){
             this.yloc = this.yloc - 83;
             }
@@ -120,9 +113,8 @@ Player.prototype.handleInput = function(x){
 Player.prototype.GameOver=function(){
     if(this.yloc < 0){ //when the player reaches the water, player has won the game. And we move the player back to the starting point.
         alert("Congrats !! You win");
-        player.xloc = player.resetPositionX; 
-        player.yloc = player.resetPositionY;
-        //player.sprite = null;
+        player.xloc = player.resetPositionX; //resetting the player x coordinates to the initial position
+        player.yloc = player.resetPositionY;//resetting the player y coordinates to the initial position
     }
 };
 
