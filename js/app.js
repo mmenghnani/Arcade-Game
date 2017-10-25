@@ -60,10 +60,10 @@ document.addEventListener('keyup', function(e) {
 // Now write your own player class
 var Player = function() {
     this.sprite = null;
-    this.xloc = 202;
-    this.yloc = 402;
     this.resetPositionX = 202;
-    this.resetPositionY = 402;
+    this.resetPositionY = 392;
+    this.x = this.resetPositionX;
+    this.y = this.resetPositionY;
 };
 
 Player.prototype.addSprite = function(sprite){
