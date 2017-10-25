@@ -1,3 +1,25 @@
 body {
     text-align: center;
 }
+
+
+.modal-body {
+    /*border: solid red 1px !important;*/
+    display: flex;
+}
+
+.sprite-styling {
+    border: solid black 1px;
+    margin: auto;
+}
+
+#boy {
+    margin-right: 10px;
+    background: #ADD8E6;
+}
+
+#girl {
+    margin-left: 10px;
+    background: #FFB6C1;
+}
+

@@ -3,13 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Arcade Game</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <body>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
-
+       
+        
+    <script src="js/resources.js" type="text/javascript"></script>
+    <script src="js/engine.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Please select your avatar</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="boy" class="sprite-styling" onclick="player.addSprite('images/char-boy.png')" data-dismiss="modal">
+                        <img src="images/char-boy.png">
+                    </div>
+                    <div id="girl" class="sprite-styling" onclick="player.addSprite('images/char-horn-girl.png')" data-dismiss="modal">
+                        <img src="images/char-horn-girl.png">
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

@@ -62,31 +62,33 @@ document.addEventListener('keyup', function(e) {
 //Player class along with player image.
 // Now write your own player class
 var Player = function() {
-    this.sprite = 'images/char-boy.png';
+    this.sprite = null;
     this.xloc = 202;
     this.yloc = 402;
     this.resetPositionX = 202;
     this.resetPositionY = 402;
 };
 
-// Place the player object in a variable called player
-var player = new Player();
+Player.prototype.addSprite = function(sprite){
+    this.sprite = sprite;
+};
+
 
 // This class requires an update(), render() and
 // a handleInput() method.
 
-Player.prototype.update = function(direction){   
-    this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
+Player.prototype.update = function(){ 
+    //this.GameOver(); //when the player reaches water, its game over. comparing the y coordinates
 };
-
 
 Player.prototype.render = function(){
-    //if(!test){ 
-        if((this.yloc > -50) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
+        if(this.sprite !=null){
+            if((this.yloc > -50) && (this.yloc<450)){ //greater than to cut the impressions above the canvas and less than to cut the impressions below the canvas 
             window.ctx.drawImage(Resources.get(this.sprite),(this.xloc),(this.yloc));
-        }
-    //}
-};
+        } 
+    } 
+        this.GameOver();
+}; 
 
 /* 
 The first condition(direction) is to translate the key pressed by the player and change the coordinates accordingly.
@@ -115,11 +117,14 @@ Player.prototype.handleInput = function(x){
             }
 };
 
-Player.prototype.GameOver = function(){
+Player.prototype.GameOver=function(){
     if(this.yloc < 0){ //when the player reaches the water, player has won the game. And we move the player back to the starting point.
-        alert("You win");
+        alert("Congrats !! You win");
         player.xloc = player.resetPositionX; 
         player.yloc = player.resetPositionY;
+        //player.sprite = null;
     }
 };
 
+// Place the player object in a variable called player
+var player = new Player();

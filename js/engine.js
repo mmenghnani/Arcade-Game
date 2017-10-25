@@ -115,7 +115,6 @@ var Engine = (function(global) {
         });
     }
     
-
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -
@@ -183,9 +182,13 @@ var Engine = (function(global) {
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
-    function reset() {
         // noop
-    }
+        function reset() {
+            // invoke 'select player' modal on page load
+            $(win).on('load',function() {
+                $('#myModal').modal('show');
+            });
+        }
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
@@ -198,9 +201,9 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png',
         'images/Rock.png',
-        'images/Heart.png'
-
-
+        'images/Heart.png',
+        'images/char-horn-girl.png',
+        'images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 
