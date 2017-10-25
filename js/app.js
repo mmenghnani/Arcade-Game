@@ -61,9 +61,10 @@ document.addEventListener('keyup', function(e) {
 var Player = function() {
     this.sprite = null;
     this.resetPositionX = 202;
-    this.resetPositionY = 392;
-    this.x = this.resetPositionX;
-    this.y = this.resetPositionY;
+    this.resetPositionY = 410;
+    this.xloc = this.resetPositionX;
+    this.yloc = this.resetPositionY; 
+    
 };
 
 Player.prototype.addSprite = function(sprite){
