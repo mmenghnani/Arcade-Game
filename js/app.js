@@ -65,6 +65,8 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.xloc = 202;
     this.yloc = 402;
+    this.resetPositionX = 202;
+    this.resetPositionY = 402;
 };
 
 // Place the player object in a variable called player
@@ -109,13 +111,15 @@ Player.prototype.handleInput = function(x){
             /* Game is paused and an alert is displayed when the user presses the key "p" or the space bar
             Clicking on "ok" starts the game back again */
             else if(x == "paused" || x == "space bar"  ){
-            alert("Game is paused"); 
+            alert("Game is paused.Press ok to resume the game"); 
             }
 };
 
 Player.prototype.GameOver = function(){
-    if(this.yloc < 0){ //when the player reaches the water, its game over. player has won the game.
+    if(this.yloc < 0){ //when the player reaches the water, player has won the game. And we move the player back to the starting point.
         alert("You win");
+        player.xloc = player.resetPositionX; 
+        player.yloc = player.resetPositionY;
     }
 };
 
