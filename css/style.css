@@ -3,10 +3,15 @@ body {
     background-image: url("background.jpg");
    }
 
+.modal-content{
+    width: 50%;
+    margin-left: 25%;
+}
 
 .modal-body {
     /*border: solid red 1px !important;*/
     display: flex;
+   
 }
 
 .sprite-styling {
