@@ -4,6 +4,7 @@ Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015
 
 for self-checking their submission.
 
+For getting access to the game, please visit https://mmenghnani.github.io/Arcade-Game/ 
 
 HOW TO PLAY
 ===========
