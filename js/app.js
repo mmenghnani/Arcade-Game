@@ -114,8 +114,8 @@ Player.prototype.handleInput = function(x){
 Player.prototype.GameOver=function(){
     if(this.yloc < 0){ //when the player reaches the water, player has won the game. And we move the player back to the starting point.
         alert("Congrats !! You win");
-        player.xloc = player.resetPositionX; //resetting the player x coordinates to the initial position
-        player.yloc = player.resetPositionY;//resetting the player y coordinates to the initial position
+        this.xloc = this.resetPositionX; //resetting the player x coordinates to the initial position
+        this.yloc = this.resetPositionY;//resetting the player y coordinates to the initial position
     }
 };
 
