@@ -92,16 +92,16 @@ The second conditions are to make sure that the player does not step out of the 
 */
 
 Player.prototype.handleInput = function(x){
-           if(x == "up" && player.yloc > 50 ){
+           if(x == "up" && this.yloc > 50 ){
             this.yloc = this.yloc - 83;
             }
-            else if(x == "down" && player.yloc < 320){
+            else if(x == "down" && this.yloc < 320){
                 this.yloc = this.yloc + 83;
             }
-            else if(x == "left" && player.xloc > 100){
+            else if(x == "left" && this.xloc > 100){
                 this.xloc = this.xloc - 101;
             }
-            else if(x == "right" && player.xloc < 304){
+            else if(x == "right" && this.xloc < 304){
                 this.xloc = this.xloc + 101;
             }
             /* Game is paused and an alert is displayed when the user presses the key "p" or the space bar
