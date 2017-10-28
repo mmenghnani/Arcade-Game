@@ -9,7 +9,7 @@ var Enemy = function(y,speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = -100 ; 
+    this.x = -100; //all enemies start from the same x coordinate 
     this.y = (y * 83) - 23; //y is the row number
     this.speed = speed;
 };

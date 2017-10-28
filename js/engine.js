@@ -34,11 +34,11 @@ var Engine = (function(global) {
      * and handles properly calling the update and render methods.
      */
     function main() {
+       
+        /*Displaying Game Name(Frogger Clone) above the canvas*/
         ctx.font = "25px Calibri";
-        ctx.fillStyle = "blue";
-        
-       ctx.fillText("Frogger Clone",160,35);
-        //ctx.fillText("Frogger Clone",160,735);
+        ctx.fillStyle = "blue";       
+        ctx.fillText("Frogger Clone",160,35);
         
         
         /* Get our time delta information which is required if your game
@@ -90,7 +90,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        checkCollisions();
+        checkCollisions();//This function is detecting the collisions
     }
 
     /* This is called by the update function and loops through all of the
@@ -191,7 +191,7 @@ var Engine = (function(global) {
      */
         // noop
         function reset() {
-            // invoke 'select player' modal on page load
+            // invoke 'select avatar' modal when the page loads
             $(win).on('load',function() {
                 $('#myModal').modal('show');
             });

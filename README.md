@@ -6,22 +6,20 @@ for self-checking their submission.
 
 HOW TO PLAY
 
-Selecting Player
+###Selecting Player
+On initial page load (or refresh), 'Select Player' modal will show up. Select between the two avatars using mouse point and click.
 
-On initial page load (or refresh), 'Select Player' modal will show up. Select between the two options using mouse point and click.
+###Start of the Game
+The game will start once you choose one of the avatars
 
-Moving the Player
+###Moving the Player
+Use keyboard up, down, left and right arrow keys to move the player.Please note that the player can't move outside the tiles.
 
-Use keyboard up, down, left and right arrow keys to move the player.
+###Winning the Game
+The player wins the game when the avatar reaches the water. An alert is displayed and then the avatar will be placed again on the starting location. 
 
-Winning the Game
+###Loosing the Game
+While crossing the road, if the player touches any of the enemy bugs, the game is over. The avatar will be placed on the starting location.
 
-Use arrow keys to help player cross the road and reach to the other side of the road where there is water. As soon as the player will reach to the water, the game has won and player will reset to its starting position.
-
-Loosing the Game
-
-While crossing the road, if player touches the enemy bug, you loose. The player will reset to its starting position.
-
-Pausing the Game
-
-Once the game has begun, the player can pause the game by pressing the key "p" or space bar. Clicking on "ok" on the alert dialog box will resume the game
+###Pausing the Game
+Once the game has begun, the player can pause the game by pressing the key "p" or space bar. Clicking on the "ok" button on the alert dialog box will resume the game
